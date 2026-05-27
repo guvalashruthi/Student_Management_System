@@ -1,0 +1,53 @@
+nav{
+    background-color:rgba(121, 210, 240, 0.616);
+    padding: 10px;
+    color:black;
+    padding :20px;
+    text-align: center;
+    border-radius: 20px;
+    border: 2px solid rgb(11, 11, 42);
+}
+nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color:black;
+    font-size: 18px;
+    
+    font-weight:bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+    color:white;
+
+}
+nav a:hover {
+    color:rgb(3, 3, 85);
+}
+#title
+{
+    text-align: center;
+    color:rgb(3, 3, 85);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding :20px;
+    background-color:rgba(217, 245, 231, 0.616);
+    margin: 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(3, 3, 85);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+#content{
+    text-align: center;
+    color:rgb(3, 3, 85);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:rgba(217, 245, 231, 0.616);
+    margin: 50px;
+    padding :200px;
+    border-radius: 30px;
+    font-size: 18px;
+    border: 2px solid rgb(3, 3, 85);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    color: rgb(90, 35, 111);   
+}
