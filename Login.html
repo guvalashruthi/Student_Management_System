@@ -13,17 +13,17 @@
         <a href="Login.html">Login</a>
     </nav>
     <br><br>
-    <h1>Login</h1>
-    <form action="dashboard.html" method="get">
+    <h1 id="reg">Login</h1>
+    <form id="reg-form" action="dashboard.html" method="get">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username"><br><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Login">
     </form>
-    <p>Don't have an account? <a href="Register.html">Register here</a>.</p>
+    <p id="tologin">Don't have an account? <a href="Register.html">Register here</a>.</p>
     <script>
-    const form = document.querySelector('form');    
+    const form = document.querySelector('#reg-form');    
     form.addEventListener('submit', function(event) {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;

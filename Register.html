@@ -12,9 +12,8 @@
         <a href="Register.html">Register</a>
         <a href="Login.html">Login</a>
     </nav>
-    <br><br>
-    <h1>Register</h1>   
-    <form action="Login.html" method="get">
+    <h1 id="reg">Register</h1>   
+    <form id="reg-form" action="Login.html" method="get">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username"><br><br>
         <label for="email">Email:</label>
@@ -26,10 +25,10 @@
         <input type="submit" value="Register">
 
     </form>
-    <p>Already have an account? <a href="Login.html">Login here</a>.</p>
+    <p id="tologin">Already have an account? <a href="Login.html">Login here</a>.</p>
 
 <script>
-    const form = document.querySelector('form');
+    const form = document.querySelector('#reg-form');
     form.addEventListener('submit', function(event) {
         const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;

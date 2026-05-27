@@ -51,3 +51,120 @@ nav a:hover {
     background-blend-mode: overlay;
     color: rgb(90, 35, 111);   
 }
+#reg{
+    text-align: center;
+    color:rgb(3, 3, 85);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding :20px;
+    background-color:rgba(217, 245, 231, 0.616);
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: 2px solid rgb(3, 3, 85);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+#reg-form{
+    background-color:rgba(233, 239, 224, 0.616);
+    padding: 40px;
+    margin: 20px auto;
+    width: 500px;
+    border-radius: 20px;
+    border: 2px solid rgb(3, 3, 85);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: rgb(27, 80, 74);
+}
+#reg-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(40, 102, 95);
+}
+#reg-form input[type="text"],
+#reg-form input[type="email"],
+#reg-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid rgb(3, 3, 85);
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+#reg-form input[type="submit"] {
+    background-color: rgb(3, 3, 85);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#reg-form input[type="submit"]:hover {
+    background-color: rgb(205, 93, 156);
+}
+#tologin{
+    text-align:center;
+    font-size: 18px;
+}
+body{
+    background-color:rgba(252, 218, 205, 0.616);
+    border: 5px solid rgb(38, 29, 17);
+    padding: 20px;
+    border-radius: 30px;
+}
+#dashboard-links{
+    padding: 20px;
+    text-align: center;
+    list-style-type: none;
+    font-size: 18px;
+    margin: 10px;
+    padding: 10px;
+
+}
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color:rgba(255, 255, 255, 0.616);
+    border-radius: 20px;
+    border: 2px solid rgb(3, 3, 85);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+th{
+    background-color: rgb(3, 3, 85);
+    color: white;
+    padding: 10px;
+    border: 2px solid rgb(3, 3, 85);
+    box-sizing: content-box;
+}
+td{
+    padding: 10px;
+    border: 3px solid rgb(3, 3, 85);
+    text-align: center;
+    box-sizing: content-box;
+}
+tr:nth-child(even) {
+    background-color: rgba(228, 121, 82, 0.616);
+}
+#logout{
+    text-align: center;
+    color:rgb(3, 3, 85);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding :20px;
+    margin: 20px;
+    font-size: 18px;
+}
+#login-link{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: rgb(142, 51, 13);
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#login-link:hover {
+    color: rgb(93, 37, 52);
+}
