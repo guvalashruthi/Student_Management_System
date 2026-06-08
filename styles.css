@@ -1,170 +1,249 @@
-nav{
-    background-color:rgba(121, 210, 240, 0.616);
-    padding: 10px;
-    color:black;
-    padding :20px;
-    text-align: center;
-    border-radius: 20px;
-    border: 2px solid rgb(11, 11, 42);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
-nav a {
-    margin-right: 15px;
-    text-decoration: none;
-    color:black;
-    font-size: 18px;
-    
-    font-weight:bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+
+body{
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:#1e293b;
+    min-height:100vh;
+    padding:20px;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    padding:20px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-size:17px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#facc15;
+}
+
+/* TITLE */
+#title{
+    text-align:center;
+    margin:25px auto;
+    padding:25px;
+    background:white;
+    border-radius:20px;
+    max-width:900px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+#title h1{
+    color:#1e3a8a;
+}
+
+/* HOME CONTENT */
+#content{
+    margin:30px auto;
+    padding:150px 40px;
+    text-align:center;
+    border-radius:25px;
+    max-width:1100px;
     color:white;
 
+    background:
+    linear-gradient(
+        rgba(15,23,42,0.55),
+        rgba(15,23,42,0.55)
+    ),
+    url('https://images.unsplash.com/photo-1523240795612-9a054b0db644');
+
+    background-size:cover;
+    background-position:center;
+    box-shadow:0 12px 30px rgba(0,0,0,0.15);
 }
-nav a:hover {
-    color:rgb(3, 3, 85);
+
+#content h2{
+    font-size:42px;
+    margin-bottom:15px;
 }
-#title
-{
-    text-align: center;
-    color:rgb(3, 3, 85);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding :20px;
-    background-color:rgba(217, 245, 231, 0.616);
-    margin: 20px;
-    border-radius: 20px;
-    border: 2px solid rgb(3, 3, 85);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+#content p{
+    font-size:18px;
 }
-#content{
-    text-align: center;
-    color:rgb(3, 3, 85);
-    font-family: Arial, Helvetica, sans-serif;
-    background-color:rgba(217, 245, 231, 0.616);
-    margin: 50px;
-    padding :200px;
-    border-radius: 30px;
-    font-size: 18px;
-    border: 2px solid rgb(3, 3, 85);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-blend-mode: overlay;
-    color: rgb(90, 35, 111);   
-}
+
+/* REGISTRATION HEADING */
 #reg{
-    text-align: center;
-    color:rgb(3, 3, 85);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding :20px;
-    background-color:rgba(217, 245, 231, 0.616);
-    margin: 10px;
-    font-size: 16px;
-    border-radius: 40px;
-    border: 2px solid rgb(3, 3, 85);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    text-align:center;
+    margin:30px auto;
+    padding:20px;
+    background:white;
+    max-width:800px;
+    border-radius:15px;
+    color:#1e3a8a;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
+
+/* FORM */
 #reg-form{
-    background-color:rgba(233, 239, 224, 0.616);
-    padding: 40px;
-    margin: 20px auto;
-    width: 500px;
-    border-radius: 20px;
-    border: 2px solid rgb(3, 3, 85);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    color: rgb(27, 80, 74);
+    width:500px;
+    max-width:90%;
+    margin:30px auto;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
-#reg-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(40, 102, 95);
+
+#reg-form label{
+    display:block;
+    text-align:left;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#334155;
 }
+
 #reg-form input[type="text"],
 #reg-form input[type="email"],
-#reg-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid rgb(3, 3, 85);
-    border-radius: 20px;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+#reg-form input[type="password"]{
+    width:100%;
+    padding:12px;
+    margin-bottom:18px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    outline:none;
+    transition:0.3s;
 }
-#reg-form input[type="submit"] {
-    background-color: rgb(3, 3, 85);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+#reg-form input:focus{
+    border-color:#4f46e5;
+    box-shadow:0 0 10px rgba(79,70,229,0.2);
 }
-#reg-form input[type="submit"]:hover {
-    background-color: rgb(205, 93, 156);
+
+#reg-form input[type="submit"]{
+    width:100%;
+    padding:12px;
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
 }
+
+#reg-form input[type="submit"]:hover{
+    transform:translateY(-2px);
+}
+
+/* LOGIN TEXT */
 #tologin{
     text-align:center;
-    font-size: 18px;
+    margin-top:15px;
 }
-body{
-    background-color:rgba(252, 218, 205, 0.616);
-    border: 5px solid rgb(38, 29, 17);
-    padding: 20px;
-    border-radius: 30px;
-}
-#dashboard-links{
-    padding: 20px;
-    text-align: center;
-    list-style-type: none;
-    font-size: 18px;
-    margin: 10px;
-    padding: 10px;
 
+/* DASHBOARD LINKS */
+#dashboard-links{
+    list-style:none;
+    text-align:center;
+    margin:30px;
 }
-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color:rgba(255, 255, 255, 0.616);
-    border-radius: 20px;
-    border: 2px solid rgb(3, 3, 85);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+#dashboard-links li{
+    margin:15px 0;
 }
+
+#dashboard-links a{
+    display:inline-block;
+    text-decoration:none;
+    background:#4f46e5;
+    color:white;
+    padding:12px 25px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+#dashboard-links a:hover{
+    background:#2563eb;
+}
+
+/* TABLES */
+table{
+    width:90%;
+    margin:30px auto;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:15px;
+    background:white;
+    box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
 th{
-    background-color: rgb(3, 3, 85);
-    color: white;
-    padding: 10px;
-    border: 2px solid rgb(3, 3, 85);
-    box-sizing: content-box;
+    background:#4f46e5;
+    color:white;
+    padding:15px;
 }
+
 td{
-    padding: 10px;
-    border: 3px solid rgb(3, 3, 85);
-    text-align: center;
-    box-sizing: content-box;
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #e2e8f0;
 }
-tr:nth-child(even) {
-    background-color: rgba(228, 121, 82, 0.616);
+
+tr:hover{
+    background:#eef2ff;
 }
+
+/* LOGOUT */
 #logout{
-    text-align: center;
-    color:rgb(3, 3, 85);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding :20px;
-    margin: 20px;
-    font-size: 18px;
+    text-align:center;
+    margin:25px;
+    font-size:20px;
+    font-weight:600;
 }
+
+/* LOGIN LINK */
 #login-link{
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 18px;
-    color: rgb(142, 51, 13);
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    margin-top:20px;
+    color:#4f46e5;
+    font-weight:600;
 }
-#login-link:hover {
-    color: rgb(93, 37, 52);
+
+#login-link:hover{
+    color:#1e40af;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    nav a{
+        display:block;
+        margin:10px 0;
+    }
+
+    #content{
+        padding:80px 20px;
+    }
+
+    #content h2{
+        font-size:28px;
+    }
+
+    table{
+        width:100%;
+        font-size:14px;
+    }
 }
