@@ -1,4 +1,4 @@
-/*const regForm = document.getElementById("reg-form");
+const regForm = document.getElementById("reg-form");
 
 function setError(id, message, color) {
   const el = document.getElementById(id);
@@ -163,4 +163,3 @@ if (regForm) {
   });
 }
 
-*/
