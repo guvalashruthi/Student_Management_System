@@ -26,18 +26,75 @@
         <input type="submit" value="Update Student">
     </form>
     <script>
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function(event) {
-        const name = document.getElementById('name').value;
-        const id = document.getElementById('id').value;
-        const cgpa = document.getElementById('cgpa').value;
-        const branch = document.getElementById('branch').value;
+    (function () {
+        const form = document.querySelector('form');
+        const params = new URLSearchParams(window.location.search);
+        const urlId = params.get('id');
 
-        if (!name || !id || !cgpa || !branch) {
-            alert('Please fill in all fields.');
-            event.preventDefault();
+        // Pre-fill if id provided
+        if (urlId) {
+            try {
+                const students = JSON.parse(localStorage.getItem('students') || '[]');
+                const student = students.find((s) => String(s.id) === String(urlId));
+                if (student) {
+                    document.getElementById('name').value = student.name;
+                    document.getElementById('id').value = student.id;
+                    document.getElementById('cgpa').value = student.cgpa;
+                    document.getElementById('branch').value = student.branch;
+                }
+            } catch (e) {}
         }
-    });
+
+        form.addEventListener('submit', function(event) {
+            const name = document.getElementById('name').value.trim();
+            const id = document.getElementById('id').value.trim();
+            const cgpa = document.getElementById('cgpa').value.trim();
+            const branch = document.getElementById('branch').value.trim();
+
+            if (!name || !id || !cgpa || !branch) {
+                alert('Please fill in all fields.');
+                event.preventDefault();
+                return;
+            }
+
+            if (!/^[a-zA-Z ]+$/.test(name)) {
+                alert('Name should contain only letters and spaces.');
+                event.preventDefault();
+                return;
+            }
+
+            if (!/^\d+$/.test(id)) {
+                alert('ID should be numeric only.');
+                event.preventDefault();
+                return;
+            }
+
+            const cgpaNum = Number(cgpa);
+            if (Number.isNaN(cgpaNum) || cgpaNum < 0 || cgpaNum > 10) {
+                alert('CGPA must be a number between 0 and 10.');
+                event.preventDefault();
+                return;
+            }
+
+            if (branch.length < 2) {
+                alert('Branch is required.');
+                event.preventDefault();
+                return;
+            }
+
+            // Update localStorage
+            const students = JSON.parse(localStorage.getItem('students') || '[]');
+            const idx = students.findIndex((s) => String(s.id) === String(id));
+            if (idx === -1) {
+                alert('Student not found.');
+                event.preventDefault();
+                return;
+            }
+
+            students[idx] = { name, id, cgpa: cgpaNum, branch };
+            localStorage.setItem('students', JSON.stringify(students));
+        });
+    })();
     </script>
 </body>
 </html>

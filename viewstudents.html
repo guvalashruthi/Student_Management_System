@@ -14,6 +14,7 @@
                 <a href="logout.html">Logout</a>
             </nav>
     <h1 id="reg">View Students</h1>
+    <p id="view-students-error" style="text-align:center;"></p>
     <table border="0" cellpadding="10">
         <tr>
             <th>Name</th>
@@ -22,48 +23,66 @@
             <th>Branch</th>
             <th>Edit</th>
             <th>Delete</th>
-
         </tr>
-        <tr>
-            <td>John Doe</td>
-            <td>12345</td>
-            <td>3.5</td>
-            <td>Computer Science</td>
-            <td><a href="editstudents.html">Edit</a></td>
-            <td><a href="deletestudents.html">Delete</a></td>
-        </tr>
-        <tr>
-            <td>Jane Smith</td>
-            <td>67890</td>
-            <td>3.8</td>
-            <td>Electrical Engineering</td>
-            <td><a href="editstudents.html">Edit</a></td>
-            <td><a href="deletestudents.html">Delete</a></td>
-        </tr>
-        <tr>
-            <td>John Doe</td>
-            <td>12345</td>
-            <td>3.5</td>
-            <td>Computer Science</td>
-            <td><a href="editstudents.html">Edit</a></td>
-            <td><a href="deletestudents.html">Delete</a></td>
-        </tr>
-        <tr>
-            <td>John Doe</td>
-            <td>12345</td>
-            <td>3.5</td>
-            <td>Computer Science</td>
-            <td><a href="editstudents.html">Edit</a></td>
-            <td><a href="deletestudents.html">Delete</a></td>
-        </tr>
-        <tr>
-            <td>John Doe</td>
-            <td>12345</td>
-            <td>3.5</td>
-            <td>Computer Science</td>
-            <td><a href="editstudents.html">Edit</a></td>
-            <td><a href="deletestudents.html">Delete</a></td>
-        </tr>
+        <tbody id="students-body">
+            <tr>
+                <td colspan="6">No students found.</td>
+            </tr>
+        </tbody>
     </table>
+
+    <script>
+        (function () {
+            const tableBody = document.getElementById('students-body');
+            const errEl = document.getElementById('view-students-error');
+
+            function renderStudents(students) {
+                tableBody.innerHTML = '';
+                if (!students || students.length === 0) {
+                    const tr = document.createElement('tr');
+                    const td = document.createElement('td');
+                    td.colSpan = 6;
+                    td.textContent = 'No students found.';
+                    tr.appendChild(td);
+                    tableBody.appendChild(tr);
+                    return;
+                }
+
+                students.forEach((s) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${s.name}</td>
+                        <td>${s.id}</td>
+                        <td>${s.cgpa}</td>
+                        <td>${s.branch}</td>
+                        <td><a href="editstudents.html?id=${encodeURIComponent(s.id)}">Edit</a></td>
+                        <td><button type="button" onclick="deleteStudent('${s.id}')">Delete</button></td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+            }
+
+            window.deleteStudent = function (id) {
+                try {
+                    const students = JSON.parse(localStorage.getItem('students') || '[]');
+                    const updated = students.filter((s) => String(s.id) !== String(id));
+                    localStorage.setItem('students', JSON.stringify(updated));
+                    renderStudents(updated);
+                } catch (e) {
+                    if (errEl) errEl.textContent = 'Failed to delete student.';
+                }
+            };
+
+            let students = [];
+            try {
+                students = JSON.parse(localStorage.getItem('students') || '[]');
+            } catch (e) {
+                students = [];
+            }
+
+            if (errEl) errEl.textContent = '';
+            renderStudents(students);
+        })();
+    </script>
 </body>
 </html>

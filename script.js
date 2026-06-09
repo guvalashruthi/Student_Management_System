@@ -1,79 +1,178 @@
-const form=document.getElementById("reg-form");
-form.addEventListener("submit",function(event){
-    let isValid=true;
-    event.preventDefault(); 
-    const username=document.getElementById("username").value;
-    console.log(username);
-    const usernameError=document.getElementById("username-error");
-    if(username.length<8){
-        usernameError.textContent="Username must be of 8 characters";
-        usernameError.style.color="red";
-        isValid=false;
-    }else{
-        usernameError.textContent="Username is valid";
-        usernameError.style.color="green";
-        
+const regForm = document.getElementById("reg-form");
+
+// Common helpers
+function setError(id, message, color) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = message;
+  el.style.color = color;
+}
+
+function validateUsername(username) {
+  // 8+ characters, no spaces
+  if (!username || username.length < 8) return "Username must be at least 8 characters";
+  if (/\s/.test(username)) return "Username must not contain spaces";
+  return null;
+}
+
+function validateEmail(email) {
+  if (!email) return "Email is required";
+  // Simple email pattern
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!re.test(email)) return "Wrong email id please check again";
+  return null;
+}
+
+function validatePassword(password) {
+  if (!password) return "Password is required";
+  const hasUpper = /[A-Z]/.test(password);
+  const hasLower = /[a-z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  const hasSpecial = /[@#$%!&*]/.test(password);
+  if (password.length < 8) return "Password must be at least 8 characters";
+  if (!hasLower || !hasUpper || !hasNumber || !hasSpecial) return "Password must include upper, lower, number and special character (@ # $ % ! & *)";
+  return null;
+}
+
+function validateConfirmPassword(password, confirmPassword) {
+  if (!confirmPassword) return "Confirm password is required";
+  if (password !== confirmPassword) return "Password is not same";
+  return null;
+}
+
+if (regForm) {
+  regForm.addEventListener("submit", function (event) {
+    // If this is Register.html
+    const usernameInput = document.getElementById("username");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("confirm_password");
+
+    // Login.html has username/password but no email/confirm_password.
+    const isRegisterPage = !!emailInput && !!confirmInput;
+
+    // Always prevent default; we will allow only when valid.
+    event.preventDefault();
+
+    // Get values safely
+    const username = usernameInput ? usernameInput.value.trim() : "";
+    const email = emailInput ? emailInput.value.trim() : "";
+    const password = passwordInput ? passwordInput.value : "";
+    const confirmPassword = confirmInput ? confirmInput.value : "";
+
+    let isValid = true;
+
+    if (isRegisterPage) {
+      // Username
+      const usernameError = validateUsername(username);
+      if (usernameError) {
+        setError("username-error", usernameError, "red");
+        isValid = false;
+      } else {
+        setError("username-error", "Username is valid", "green");
+      }
+
+      // Email
+      const emailError = validateEmail(email);
+      if (emailError) {
+        setError("email-error", emailError, "red");
+        isValid = false;
+      } else {
+        setError("email-error", "Valid Email id", "green");
+      }
+
+      // Password
+      const passwordErrorMsg = validatePassword(password);
+      if (passwordErrorMsg) {
+        setError("password-error", passwordErrorMsg, "red");
+        isValid = false;
+      } else {
+        setError("password-error", "Password is strong", "green");
+      }
+
+      // Confirm
+      const confirmErrorMsg = validateConfirmPassword(password, confirmPassword);
+      if (confirmErrorMsg) {
+        setError("confirm-password-error", confirmErrorMsg, "red");
+        isValid = false;
+      } else {
+        setError("confirm-password-error", "Password is same", "green");
+      }
+
+      if (!isValid) return;
+
+      const user = {
+        username,
+        email,
+        password
+      };
+
+      localStorage.setItem("user", JSON.stringify(user));
+      const confirmRegister = confirm("Are you sure you want to register?");
+      if (confirmRegister) {
+        window.location.href = "Login.html";
+      }
+
+      return;
     }
-    const email=document.getElementById("email").value;
-    console.log(email);
-    const emailError=document.getElementById("email-error");
-    const atPosition=email.indexOf("@");
-    const dotposition=email.lastIndexOf(".");
-    if(email.includes("@") && dotposition>atPosition){
-        emailError.textContent="Valid Email id";
-        emailError.style.color="green";
-        
-        
-    }else{
-        emailError.textContent="Wrong email id please chack again";
-        emailError.style.color="red";
-        isValid=false;
+
+    // Otherwise handle Login.html validations
+    const loginUsernameErrorEl = document.getElementById("login-username-error");
+    const loginPasswordErrorEl = document.getElementById("login-password-error");
+
+    // For login.html we will show errors in newly added <p> tags (if present)
+    if (!username) {
+      if (loginUsernameErrorEl) {
+        loginUsernameErrorEl.textContent = "Username is required";
+        loginUsernameErrorEl.style.color = "red";
+      }
+      isValid = false;
+    } else {
+      if (loginUsernameErrorEl) {
+        loginUsernameErrorEl.textContent = "";
+        loginUsernameErrorEl.style.color = "green";
+      }
     }
-    const password=document.getElementById("password").value;
-    const passwordError=document.getElementById("password-error");
-    const passwordHasUpperCase=password.match(/[A-Z]/);
-    const passwordHasLowerCase=password.match(/[a-z]/);
-    const passwordHasNumbers=password.match(/[0-9]/);
-   const passwordHasSpecialCharecter=password.match(/[@#$%!&*]/);
-    if(password.length>=8 && passwordHasLowerCase && passwordHasUpperCase && passwordHasNumbers && passwordHasSpecialCharecter){
-        passwordError.textContent="Password is strong";
-        passwordError.style.color="green";
-      
-    }else{
-        passwordError.textContent="Password is weak give strong password";
-        passwordError.style.color="red"; 
-        isValid=false;  
+
+    if (!password) {
+      if (loginPasswordErrorEl) {
+        loginPasswordErrorEl.textContent = "Password is required";
+        loginPasswordErrorEl.style.color = "red";
+      }
+      isValid = false;
+    } else {
+      if (loginPasswordErrorEl) {
+        loginPasswordErrorEl.textContent = "";
+        loginPasswordErrorEl.style.color = "green";
+      }
     }
-    const confirmpassword=document.getElementById('confirm_password').value;
-    const confirmpasswordError=document.getElementById('confirm-password-error');
-    if(password==confirmpassword){
-        confirmpasswordError.textContent="Password is same";
-        confirmpasswordError.style.color="green";
-       
-    }else{
-        confirmpasswordError.textContent="Password is not same";
-        confirmpasswordError.style.color="red";
-        isValid=false;
+
+    if (!isValid) return;
+
+    const stored = localStorage.getItem("user");
+    if (!stored) {
+      alert("No registered user found. Please register first.");
+      return;
     }
-    const user = {
-    username: username,
-    email: email,
-    password: password
-    };
-    
-    if(isValid){
 
-    localStorage.setItem("user", JSON.stringify(user));
+    const user = JSON.parse(stored);
+    if (user.username !== username || user.password !== password) {
+      // show error
+      if (loginUsernameErrorEl) {
+        loginUsernameErrorEl.textContent = "Invalid username or password";
+        loginUsernameErrorEl.style.color = "red";
+      }
+      if (loginPasswordErrorEl) {
+        loginPasswordErrorEl.textContent = "Invalid username or password";
+        loginPasswordErrorEl.style.color = "red";
+      }
+      return;
+    }
 
-    const confirmRegister = confirm("Are you sure you want to register?");
+    const confirmLogin = confirm("Are you sure you want to login?");
+    if (confirmLogin) {
+      window.location.href = "dashboard.html";
+    }
+  });
+}
 
-            if(confirmRegister){
-            window.location.href = "Login.html";
-            }
-
-        }
-    
-
-
-    
-});
