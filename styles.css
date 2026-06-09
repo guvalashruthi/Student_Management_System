@@ -94,7 +94,8 @@ nav a:hover{
 }
 
 /* FORM */
-#reg-form{
+#reg-form,
+#login-form{
     width:500px;
     max-width:90%;
     margin:30px auto;
@@ -104,7 +105,8 @@ nav a:hover{
     box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
-#reg-form label{
+#reg-form label,
+#login-form label{
     display:block;
     text-align:left;
     margin-bottom:8px;
@@ -114,7 +116,9 @@ nav a:hover{
 
 #reg-form input[type="text"],
 #reg-form input[type="email"],
-#reg-form input[type="password"]{
+#reg-form input[type="password"],
+#login-form input[type="text"],
+#login-form input[type="password"]{
     width:100%;
     padding:12px;
     margin-bottom:18px;
@@ -124,12 +128,14 @@ nav a:hover{
     transition:0.3s;
 }
 
-#reg-form input:focus{
+#reg-form input:focus,
+#login-form input:focus{
     border-color:#4f46e5;
     box-shadow:0 0 10px rgba(79,70,229,0.2);
 }
 
-#reg-form input[type="submit"]{
+#reg-form input[type="submit"],
+#login-form input[type="submit"]{
     width:100%;
     padding:12px;
     background:linear-gradient(135deg,#2563eb,#4f46e5);
@@ -142,7 +148,8 @@ nav a:hover{
     transition:0.3s;
 }
 
-#reg-form input[type="submit"]:hover{
+#reg-form input[type="submit"]:hover,
+#login-form input[type="submit"]:hover{
     transform:translateY(-2px);
 }
 
