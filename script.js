@@ -1,6 +1,5 @@
 const regForm = document.getElementById("reg-form");
 
-// Common helpers
 function setError(id, message, color) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -9,7 +8,6 @@ function setError(id, message, color) {
 }
 
 function validateUsername(username) {
-  // 8+ characters, no spaces
   if (!username || username.length < 8) return "Username must be at least 8 characters";
   if (/\s/.test(username)) return "Username must not contain spaces";
   return null;
@@ -17,7 +15,6 @@ function validateUsername(username) {
 
 function validateEmail(email) {
   if (!email) return "Email is required";
-  // Simple email pattern
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!re.test(email)) return "Wrong email id please check again";
   return null;
@@ -42,19 +39,15 @@ function validateConfirmPassword(password, confirmPassword) {
 
 if (regForm) {
   regForm.addEventListener("submit", function (event) {
-    // If this is Register.html
     const usernameInput = document.getElementById("username");
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const confirmInput = document.getElementById("confirm_password");
 
-    // Login.html has username/password but no email/confirm_password.
     const isRegisterPage = !!emailInput && !!confirmInput;
 
-    // Always prevent default; we will allow only when valid.
     event.preventDefault();
 
-    // Get values safely
     const username = usernameInput ? usernameInput.value.trim() : "";
     const email = emailInput ? emailInput.value.trim() : "";
     const password = passwordInput ? passwordInput.value : "";
@@ -63,7 +56,6 @@ if (regForm) {
     let isValid = true;
 
     if (isRegisterPage) {
-      // Username
       const usernameError = validateUsername(username);
       if (usernameError) {
         setError("username-error", usernameError, "red");
@@ -72,7 +64,6 @@ if (regForm) {
         setError("username-error", "Username is valid", "green");
       }
 
-      // Email
       const emailError = validateEmail(email);
       if (emailError) {
         setError("email-error", emailError, "red");
@@ -81,7 +72,6 @@ if (regForm) {
         setError("email-error", "Valid Email id", "green");
       }
 
-      // Password
       const passwordErrorMsg = validatePassword(password);
       if (passwordErrorMsg) {
         setError("password-error", passwordErrorMsg, "red");
@@ -90,7 +80,6 @@ if (regForm) {
         setError("password-error", "Password is strong", "green");
       }
 
-      // Confirm
       const confirmErrorMsg = validateConfirmPassword(password, confirmPassword);
       if (confirmErrorMsg) {
         setError("confirm-password-error", confirmErrorMsg, "red");
@@ -116,11 +105,9 @@ if (regForm) {
       return;
     }
 
-    // Otherwise handle Login.html validations
     const loginUsernameErrorEl = document.getElementById("login-username-error");
     const loginPasswordErrorEl = document.getElementById("login-password-error");
 
-    // For login.html we will show errors in newly added <p> tags (if present)
     if (!username) {
       if (loginUsernameErrorEl) {
         loginUsernameErrorEl.textContent = "Username is required";
@@ -157,7 +144,7 @@ if (regForm) {
 
     const user = JSON.parse(stored);
     if (user.username !== username || user.password !== password) {
-      // show error
+     
       if (loginUsernameErrorEl) {
         loginUsernameErrorEl.textContent = "Invalid username or password";
         loginUsernameErrorEl.style.color = "red";
