@@ -14,7 +14,7 @@
         <a href="logout.html">Logout</a>
     </nav>
     <h1 id="reg">Edit Student</h1>
-    <form id="reg-form" action="viewstudents.html" method="get">
+    <form id="student-form" action="viewstudents.html" method="get">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
         <label for="id">ID:</label>
@@ -25,7 +25,7 @@
         <input type="text" id="branch" name="branch"><br><br>
         <input type="submit" value="Update Student">
     </form>
-    <script>
+   <!-- <script>
     (function () {
         const form = document.querySelector('form');
         const params = new URLSearchParams(window.location.search);
@@ -95,6 +95,7 @@
             localStorage.setItem('students', JSON.stringify(students));
         });
     })();
-    </script>
+    </script>-->
+    <script src="script2.js"></script>
 </body>
 </html>

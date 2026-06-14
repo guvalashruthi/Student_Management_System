@@ -15,23 +15,25 @@
             </nav>
     <h1 id="reg">View Students</h1>
     <p id="view-students-error" style="text-align:center;"></p>
-    <table border="0" cellpadding="10">
+    <table border="1">
+    <thead>
         <tr>
-            <th>Name</th>
             <th>ID</th>
+            <th>Name</th>
             <th>CGPA</th>
             <th>Branch</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Actions</th>
         </tr>
-        <tbody id="students-body">
-            <tr>
-                <td colspan="6">No students found.</td>
-            </tr>
-        </tbody>
-    </table>
+    </thead>
 
-    <script>
+    <tbody id="student-table"></tbody>
+</table>
+
+<script src="script2.js"></script>
+    
+    
+
+    <!--<script>
         (function () {
             const tableBody = document.getElementById('students-body');
             const errEl = document.getElementById('view-students-error');
@@ -83,6 +85,6 @@
             if (errEl) errEl.textContent = '';
             renderStudents(students);
         })();
-    </script>
+    </script>-->
 </body>
 </html>

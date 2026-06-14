@@ -15,7 +15,7 @@
     </nav>
 
     <h1 id="title">Add Students</h1>
-    <form id="reg-form" action="viewstudents.html" method="get">
+    <form id="student-form" action="viewstudents.html" method="get">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
         <label for="id">ID:</label>
@@ -27,7 +27,7 @@
         <input type="submit" value="Add Student">
     </form>
     
-    <script>
+    <!--<script>
     const form = document.querySelector('#reg-form');
     form.addEventListener('submit', function(event) {
         const name = document.getElementById('name').value.trim();
@@ -79,6 +79,7 @@
         students.push({ name, id, cgpa: cgpaNum, branch });
         localStorage.setItem('students', JSON.stringify(students));
     });
-    </script>
+    </script>-->
+    <script src="script2.js"></script>
 </body>
 </html>
