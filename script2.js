@@ -26,9 +26,7 @@ function validateStudentBranch(branch) {
     return /^[A-Za-z ]+$/.test(branch);
 }
 
-// =======================
-// STORAGE HELPERS
-// =======================
+
 
 async function readStorage(key) {
     return new Promise(resolve => {
@@ -107,9 +105,6 @@ async function ensureLoggedIn() {
 }
 
 
-// =======================
-// REGISTER
-// =======================
 
 const registerForm = document.getElementById('reg-form');
 
@@ -165,10 +160,6 @@ async function registerUser(e) {
 }
 
 
-// =======================
-// LOGIN
-// =======================
-
 const loginForm = document.getElementById('login-form');
 
 if (loginForm) {
@@ -195,9 +186,6 @@ async function loginUser(e) {
 }
 
 
-// =======================
-// STUDENT FORM
-// =======================
 
 const studentForm = document.getElementById('student-form');
 
@@ -284,10 +272,6 @@ async function updateStudent(recordId, studentData) {
 }
 
 
-// =======================
-// VIEW STUDENTS
-// =======================
-
 async function loadStudents() {
     const table = document.getElementById('student-table');
     if (!table) return;
@@ -317,9 +301,6 @@ async function loadStudents() {
 }
 
 
-// =======================
-// DELETE STUDENT
-// =======================
 
 async function deleteStudent(recordId) {
     const confirmed = confirm('Delete Student?');
@@ -330,9 +311,7 @@ async function deleteStudent(recordId) {
 }
 
 
-// =======================
-// EDIT STUDENT
-// =======================
+
 
 function editStudent(recordId) {
     window.location.href = `editstudents.html?id=${recordId}`;
@@ -353,11 +332,6 @@ async function loadStudentData() {
     document.getElementById('branch').value = student.branch;
 }
 
-
-// =======================
-// DASHBOARD
-// =======================
-
 async function loadDashboard() {
     if (!window.location.pathname.toLowerCase().includes('dashboard')) return;
 
@@ -371,19 +345,10 @@ async function loadDashboard() {
 }
 
 
-// =======================
-// LOGOUT
-// =======================
-
 function handleLogoutPage() {
     if (!window.location.pathname.toLowerCase().includes('logout')) return;
     clearLoggedUser();
 }
-
-
-// =======================
-// PAGE INITIALIZATION
-// =======================
 
 async function initPage() {
     const pathname = window.location.pathname.toLowerCase();
