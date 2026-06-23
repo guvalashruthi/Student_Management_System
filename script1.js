@@ -1,4 +1,4 @@
-const form=document.getElementById("reg-form");
+/*const form=document.getElementById("reg-form");
 if (form) {
     form.addEventListener("submit",function(event){
         event.preventDefault();
@@ -100,4 +100,4 @@ if (loginForm) {
         window.location.href = "dashboard.html";
     }
     });
-}
+}*/
